@@ -1,0 +1,14 @@
+{
+  "name": "my-api",
+  "version": "1.0.0",
+  "description": "Express TypeScript API",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

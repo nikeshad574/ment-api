@@ -1,0 +1,23 @@
+{
+  "name": "create-ment-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Create Express TypeScript API with MENT template",
+  "bin": {
+    "create-ment-api": "index.js"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "api",
+    "template",
+    "boilerplate",
+    "nodejs"
+  ],
+  "author": "Nikesh Adhikari",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/create-ment-api"
+  }
+}
