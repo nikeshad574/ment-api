@@ -1,13 +1,22 @@
 #!/usr/bin/env node
 import { execSync } from "child_process";
-import { copyFileSync, mkdirSync, cpSync } from "fs";
-import { join } from "path";
+import { copyFileSync, mkdirSync, cpSync, readdirSync } from "fs";
+import { join, basename } from "path";
 
 const projectName = process.argv[2] || "my-api";
-const projectPath = join(process.cwd(), projectName);
+const isCurrentDir = projectName === ".";
+const projectPath = isCurrentDir
+  ? process.cwd()
+  : join(process.cwd(), projectName);
 
-console.log(`Creating project: ${projectName}...`);
-mkdirSync(projectPath);
+console.log(
+  `Creating project${isCurrentDir ? " in current directory" : ": " + projectName}...`,
+);
+
+if (!isCurrentDir) {
+  mkdirSync(projectPath);
+}
+
 cpSync(new URL("./template", import.meta.url), projectPath, {
   recursive: true,
 });
@@ -18,9 +27,13 @@ const dependencies =
 const devDependencies =
   "@types/express@latest @types/morgan@latest @types/node@latest @types/nodemailer@latest morgan@latest nodemon@latest ts-node@latest typescript@latest";
 
-execSync(`cd ${projectName} && npm install ${dependencies}`, {
+const cdCommand = isCurrentDir ? "" : `cd ${projectName} && `;
+
+execSync(`${cdCommand}npm install ${dependencies}`, {
   stdio: "inherit",
+  cwd: projectPath,
 });
-execSync(`cd ${projectName} && npm install -D ${devDependencies}`, {
+execSync(`${cdCommand}npm install -D ${devDependencies}`, {
   stdio: "inherit",
+  cwd: projectPath,
 });
