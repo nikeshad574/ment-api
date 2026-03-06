@@ -23,9 +23,9 @@ cpSync(new URL("./template", import.meta.url), projectPath, {
 
 console.log("Installing latest dependencies...");
 const dependencies =
-  "dotenv@latest express@latest express-validator@latest mongoose@latest nodemailer@latest";
+  "dotenv@latest express@latest express-validator@latest mongoose@latest nodemailer@latest cookie-parser@latest";
 const devDependencies =
-  "@types/express@latest @types/morgan@latest @types/node@latest @types/nodemailer@latest morgan@latest nodemon@latest ts-node@latest typescript@latest";
+  "@types/express@latest @types/morgan@latest @types/node@latest @types/nodemailer@latest morgan@latest nodemon@latest ts-node@latest typescript@latest @types/cookie-parser@latest";
 
 const cdCommand = isCurrentDir ? "" : `cd ${projectName} && `;
 
